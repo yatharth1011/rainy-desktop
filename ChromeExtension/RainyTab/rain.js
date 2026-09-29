@@ -10,7 +10,7 @@
 // The rain shader below is adapted from "Heartfelt" by Martijn Steinrucken
 // (BigWings), https://www.shadertoy.com/view/ltffzl -- this file is licensed
 // CC BY-NC-SA 3.0 (https://creativecommons.org/licenses/by-nc-sa/3.0/), not
-// MIT; see LICENSE.
+// MIT; see NOTICE.
 
 const BRIDGE = 'http://127.0.0.1:47823';
 const MAX_GLASS = 32; // lenses per frame: New Tab UI, or a site's panels + buttons

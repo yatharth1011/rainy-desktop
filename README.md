@@ -29,6 +29,45 @@ a liquid-glass look into your browser.
 
   See [`ChromeExtension/README.md`](ChromeExtension/README.md).
 
+## Install
+
+You'll need a Mac running macOS 13 (Ventura) or later.
+
+1. **Install Apple's developer tools** if you haven't already. In Terminal:
+   ```bash
+   xcode-select --install
+   ```
+2. **Download and build Rainy:**
+   ```bash
+   git clone https://github.com/yatharth1011/rainy-desktop.git
+   cd rainy-desktop
+   ./Scripts/bundle_app.sh
+   ```
+   This builds the app and installs it to `/Applications/RainyDesktop.app`.
+3. **Open it:**
+   ```bash
+   open /Applications/RainyDesktop.app
+   ```
+   Rain appears over your wallpaper within a few seconds. If your wallpaper
+   file is in Desktop, Documents or Downloads, macOS asks once for access.
+   Click **Allow**.
+4. **Optional: start at login:**
+   ```bash
+   ./Scripts/install_login_item.sh
+   ```
+5. **Optional: Chrome.** Follow the three steps in
+   [`ChromeExtension/README.md`](ChromeExtension/README.md#install-once) to
+   load the Rainy Tab extension and the generated theme.
+
+**Using it:**
+- **Settings:** open them from the ☁ menu-bar icon. If your menu bar is
+  full, open Rainy from Spotlight again while it's running.
+- **Pause all effects:** press ⌃⌥⌘R to turn everything off and on.
+- **Quit:** use **Quit** at the bottom of Settings.
+- **Update:** `git pull && ./Scripts/bundle_app.sh`.
+- **Uninstall:** run `./Scripts/uninstall_login_item.sh`, then delete
+  `/Applications/RainyDesktop.app`.
+
 ## Build and run
 
 Requires macOS 13+ and Xcode's command-line tools.
@@ -93,6 +132,7 @@ appears in two files:
 ## License
 
 This project's own code is released under the [MIT License](LICENSE).
+Third-party terms are in [NOTICE](NOTICE).
 
 The Heartfelt-derived shader code in the two files listed under
 [Credits](#credits) remains under **CC BY-NC-SA 3.0**: attribution,

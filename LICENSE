@@ -19,16 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
--------------------------------------------------------------------------------
-
-EXCEPTION: rain shader code derived from "Heartfelt"
-
-The rain-on-glass shader code in these files is adapted from "Heartfelt" by
-Martijn Steinrucken (BigWings), https://www.shadertoy.com/view/ltffzl, and is
-licensed under Creative Commons Attribution-NonCommercial-ShareAlike 3.0
-Unported (CC BY-NC-SA 3.0), https://creativecommons.org/licenses/by-nc-sa/3.0/
--- not under the MIT License above:
-
-  - Sources/RainyDesktop/Rendering/Shaders/RenderShaders.metal
-  - ChromeExtension/RainyTab/rain.js
