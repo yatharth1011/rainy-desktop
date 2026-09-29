@@ -1,0 +1,7 @@
+html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: rgb(18, 18, 22); }
+#glass { position: fixed; inset: 0; overflow: hidden; filter: url(#lens); }
+#wallpaper {
+  position: absolute; max-width: none;
+  /* Frosted and dimmed so the layer's text reads. */
+  filter: blur(7px) brightness(0.39) saturate(1.15); /* set live by pane.js */
+}

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Rainy glass pane</title>
+  <link rel="stylesheet" href="pane.css">
+</head>
+<body>
+  <!-- Placed by glass-site.js inside a site's floating layer (menu, pop-up,
+       sticky bar): a liquid-glass lens over the wallpaper that covers the
+       page content below. -->
+  <svg width="0" height="0" aria-hidden="true">
+    <filter id="lens" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feImage id="map" preserveAspectRatio="none" result="map"/>
+      <feDisplacementMap id="bend" in="SourceGraphic" in2="map" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </svg>
+  <div id="glass"><img id="wallpaper" alt=""></div>
+  <script src="pane.js"></script>
+</body>
+</html>

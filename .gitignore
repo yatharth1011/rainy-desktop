@@ -1,0 +1,13 @@
+# SwiftPM build output
+.build/
+.swiftpm/
+*.xcodeproj/
+xcuserdata/
+
+# Icon render intermediate (Scripts/make_icon.swift)
+Assets/AppIcon.iconset/
+
+# Local link to the theme Rainy generates in ~/Library/Application Support
+ChromeExtension/RainyTheme
+
+.DS_Store

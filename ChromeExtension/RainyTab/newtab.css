@@ -1,0 +1,96 @@
+:root {
+  --glass: rgba(18, 18, 22, 0.32);
+  --glass-hover: rgba(255, 255, 255, 0.14);
+  --edge: rgba(255, 255, 255, 0.14);
+  --text: rgba(225, 225, 230, 0.78);
+  --muted: rgba(210, 210, 215, 0.5);
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; height: 100%; overflow: hidden;
+  background: #0a0a0c; color: var(--text);
+  font: 14px/1.4 system-ui, -apple-system, "Helvetica Neue", sans-serif;
+}
+#rain { position: fixed; inset: 0; width: 100vw; height: 100vh; display: block; }
+#rain[hidden] { display: none; }
+main {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 0 16px; margin-top: max(12vh, 64px);
+}
+#logo { width: 272px; max-width: 70vw; height: auto; margin-bottom: 28px; opacity: .6; filter: drop-shadow(0 2px 12px rgba(0,0,0,.45)); }
+.search-wrap { position: relative; width: min(584px, 100%); z-index: 2; }
+#search { will-change: transform;
+  display: flex; align-items: center; gap: 12px;
+  width: 100%; padding: 0 22px;
+  height: 52px; border-radius: 26px;
+}
+#search svg { width: 20px; height: 20px; fill: var(--muted); flex: none; }
+#q {
+  flex: 1; min-width: 0; height: 100%; border: 0; outline: 0; background: transparent;
+  color: var(--text); font: inherit; font-size: 16px;
+}
+#q::placeholder { color: var(--muted); }
+#shortcuts {
+  display: grid; grid-template-columns: repeat(auto-fill, 112px); justify-content: center;
+  gap: 8px; width: min(624px, 100%); margin-top: 32px;
+}
+.tile {
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  padding: 14px 6px 10px; border-radius: 16px; color: var(--text); text-decoration: none;
+  transition: background .15s;
+}
+.tile:focus-visible { outline: 2px solid rgba(255, 255, 255, .5); outline-offset: 2px; }
+.tile .icon {
+  display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%;
+  will-change: transform;
+}
+.tile img { width: 26px; height: 26px; opacity: .85; }
+.tile span {
+  max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  font-size: 13px; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+}
+#status {
+  position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 1;
+  padding: 8px 14px; border-radius: 14px; font-size: 12px; color: var(--muted);
+}
+#status[hidden] { display: none; }
+
+/* The liquid glass itself is drawn by the WebGL pass (newtab.js), which
+   refracts the fogged wallpaper at each .glass element's edges. This CSS
+   frosted glass is only the fallback when WebGL is unavailable. */
+body:not(.webgl-glass) .glass {
+  background: rgba(0, 0, 0, .18);
+  backdrop-filter: blur(10px) saturate(130%); -webkit-backdrop-filter: blur(10px) saturate(130%);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, .25);
+}
+
+#suggest {
+  position: absolute; left: 0; right: 0; top: 60px;
+  padding: 8px 0; border-radius: 22px;
+}
+#suggest[hidden] { display: none; }
+#suggest .row {
+  display: flex; align-items: center; gap: 14px;
+  height: 40px; padding: 0 22px; cursor: pointer;
+  font-size: 15px; color: var(--text);
+}
+#suggest .row svg { width: 18px; height: 18px; fill: var(--muted); flex: none; }
+#suggest .row span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#suggest .row b { font-weight: 600; color: rgba(235, 235, 240, 0.88); }
+#suggest .row.selected { background: rgba(0, 0, 0, 0.22); }
+
+#settings {
+  position: fixed; top: 16px; right: 16px; z-index: 3;
+  display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%;
+  will-change: transform;
+}
+#settings svg { width: 20px; height: 20px; fill: var(--muted); }
+
+/* Effects off (Rainy's GPU kill switch): the still wallpaper, dimmed. */
+body.effects-off {
+  background: #0a0a0c var(--wallpaper, none) center / cover no-repeat;
+}
+body.effects-off::before {
+  content: ""; position: fixed; inset: 0; background: rgba(0, 0, 0, .55); pointer-events: none;
+}

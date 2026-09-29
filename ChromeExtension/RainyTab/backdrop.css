@@ -1,0 +1,6 @@
+html, body { margin: 0; height: 100%; overflow: hidden; background: #0a0a0c; }
+#rain { position: fixed; inset: 0; width: 100vw; height: 100vh; display: block; }
+#rain[hidden] { display: none; }
+/* Effects off (Rainy's GPU kill switch): the still wallpaper, dimmed. */
+body.effects-off { background: #0a0a0c var(--wallpaper, none) center / cover no-repeat; }
+body.effects-off::before { content: ""; position: fixed; inset: 0; background: rgba(0, 0, 0, .55); }

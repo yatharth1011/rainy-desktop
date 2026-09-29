@@ -1,0 +1,56 @@
+{
+  "manifest_version": 3,
+  "name": "Rainy Tab",
+  "version": "1.0.0",
+  "description": "Rainy Desktop's live rain-on-glass: your New Tab page, and any site you toggle on.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "activeTab",
+    "alarms",
+    "favicon",
+    "management",
+    "scripting",
+    "storage",
+    "topSites"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1:47823/*",
+    "https://suggestqueries.google.com/*"
+  ],
+  "action": {
+    "default_title": "Rainy glass: toggle this site (⌥⇧G)"
+  },
+  "optional_host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ],
+  "commands": {
+    "toggle-glass": {
+      "suggested_key": {
+        "default": "Alt+Shift+G"
+      },
+      "description": "Toggle Rainy glass on this site"
+    }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "backdrop.html",
+        "pane.html"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}
