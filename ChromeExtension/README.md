@@ -2,13 +2,12 @@
 
 Two pieces, both fed by the Rainy Desktop app (which must be running):
 
-- **Rainy Tab** (`ChromeExtension/RainyTab`) -- New Tab now opens
-  google.com (turn Rainy glass on for it with ⌥⇧G). The previous custom New
-  Tab page is kept as `rainy-newtab.html`; point `chrome_url_overrides.newtab`
-  back at it to restore. That page renders
+- **Rainy Tab** (`ChromeExtension/RainyTab`) -- New Tab page that renders
   Rainy's rain shader over the part of your wallpaper behind the browser
   window, on the desktop's own rain clock (so it reads as see-through), with
-  Google search + shortcuts drawn as liquid-glass lenses.
+  Google search (+ suggestions) and shortcuts drawn as liquid-glass lenses.
+  It loads instantly and never navigates by itself, so whatever you start
+  typing in the address bar is never lost.
 - **Rainy glass on any site** (same extension) -- click the Rainy Tab
   toolbar button or press ⌥⇧G on a site to toggle it: live rain behind the
   page, the page re-skinned as dark smoked glass. Off by default everywhere;
