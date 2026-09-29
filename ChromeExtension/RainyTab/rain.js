@@ -346,7 +346,9 @@ function rebuildBlurIfNeeded() {
   if (!wallpaperBitmap) return;
   const screenH = screen.height * devicePixelRatio, screenW = screen.width * devicePixelRatio;
   const maxBlur = settings.fogMaxBlurLow + (settings.fogMaxBlurHigh - settings.fogMaxBlurLow) * Math.min(Math.max(settings.rainIntensity, 0), 1);
-  const sigma = Math.min(2 ** (maxBlur - 1) * screenH / 1080, screenH);
+  // At least ~12 CSS px of frost, whatever the fog sliders say, so the glass
+  // backdrop always reads as frosted rather than a sharp photo.
+  const sigma = Math.min(Math.max(2 ** (maxBlur - 1) * screenH / 1080, 12 * devicePixelRatio), screenH);
   const key = `${Math.round(sigma * 10)}|${screenW}x${screenH}`;
   if (key === blurKey) return;
   blurKey = key;
@@ -487,10 +489,11 @@ function draw(now) {
   // for the glass to refract.
   gl.uniform1f(uniforms.u_dimAmount, 0);
   gl.uniform1f(uniforms.u_static, effectsOff ? 1 : 0);
-  // Behind a website (backdrop.html) the page's own text sits right on the
-  // wallpaper, so soften and darken it a little; the New Tab page doesn't.
+  // Still mode frosts the wallpaper everywhere. Behind a website
+  // (backdrop.html) the page's own text sits right on it, so it's also
+  // darkened a little; the New Tab page isn't.
   const behindSite = window.parent !== window;
-  gl.uniform1f(uniforms.u_bgBlur, behindSite ? 1 : 0);
+  gl.uniform1f(uniforms.u_bgBlur, 1); // still mode: frosted wallpaper everywhere (New Tab too)
   gl.uniform1f(uniforms.u_bgDim, behindSite ? 0.3 : 0);
 
   const rects = glassRects(now);
